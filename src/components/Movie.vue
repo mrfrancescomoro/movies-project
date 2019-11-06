@@ -24,7 +24,7 @@ export default {
     .movie {
         display: block;
         @include size(150px, 300px);
-        border: 1px solid $yellow;
+        border: 1px solid $water;
         margin: 10px;
         &__pic {
             width: 100%;

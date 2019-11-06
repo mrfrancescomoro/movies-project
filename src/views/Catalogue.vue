@@ -1,6 +1,6 @@
 <template>
     <div class="catalogue">
-        <h1>This is the Catalogue page</h1>
+        <h1>Catalogue</h1>
         <div class="movies-list">
             <Movie v-for="movie in movies" :key="movies.id" :movie="movie" />
         </div>
@@ -42,6 +42,9 @@
 </script>
 
 <style lang="scss">
+    h1 {
+        font-family: $title;
+    }
     .movies-list {
         display: flex;
         flex-wrap: wrap;
