@@ -1,0 +1,22 @@
+
+body {
+    background-size: cover;
+    font-family: $text;
+    color: $black;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    &.on-mobile {
+        user-select: none;
+    }
+    & > svg { display: none; }
+}
+
+* { outline: none; box-sizing: border-box; }
+a {
+    &:hover { text-decoration: none; }
+}
+
+img { border: 0 !important; }
