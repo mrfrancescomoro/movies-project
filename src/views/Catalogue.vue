@@ -2,7 +2,12 @@
     <div class="catalogue">
         <h1>Catalogue</h1>
         <div class="movies-list">
-            <Movie v-for="movie in movies" :key="movies.id" :movie="movie" />
+            <Movie
+                v-for="movie in movies"
+                :key="movie.id"
+                :movie="movie"
+                @click.native="goToDetail(movie.id)"
+            />
         </div>
     </div>
 </template>
@@ -29,10 +34,10 @@
                     .then(resp => {
                         this.res = resp.data.results;
                         this.res.map(movie => this.movies.push(movie));
-
-                        console.log(this.movies);
-
                     })
+            },
+            goToDetail: function(movieId) {
+                this.$router.push({ name: 'detail', params: { Mid: movieId } })
             }
         },
         mounted() {
