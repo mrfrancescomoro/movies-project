@@ -27,6 +27,9 @@
                 movies: []
             }
         },
+        mounted() {
+            this.loadMovies();
+        },
         methods: {
             loadMovies: function() {
                 axios
@@ -39,9 +42,6 @@
             goToDetail: function(movieId) {
                 this.$router.push({ name: 'detail', params: { Mid: movieId } })
             }
-        },
-        mounted() {
-            this.loadMovies();
         }
     }
 </script>
