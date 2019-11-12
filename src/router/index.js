@@ -19,11 +19,6 @@ const routes = [
         component: () => import('../views/About.vue')
     },
     {
-        path: '/catalogue',
-        name: 'catalogue',
-        component: () => import('../views/Catalogue.vue')
-    },
-    {
         path: '/catalogue/:Mid',
         name: 'detail',
         component: () => import('../views/Detail.vue')
