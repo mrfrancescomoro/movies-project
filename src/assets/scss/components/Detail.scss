@@ -14,12 +14,10 @@
         &:after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
-            @include size(100%,100%);
-            background: $black;
-            mix-blend-mode:multiply;
-            opacity: 0.85;
+            @include size(100%,60vw);
+            background-image: linear-gradient(to top, $black, transparent);
         }
     }
     .movie {
@@ -27,29 +25,82 @@
         @include size(100%,auto);
         position: relative;
         border: 0;
-        padding-top: 30vh;
+        padding-top: 40vh;
         color: $white;
         margin: 0;
-        &:before {
-            content: '';
-            position: absolute;
-            bottom: 100%;
-            left: 0;
-            @include size(100%,40vh);
-            background-image: linear-gradient(to top, $black, transparent);
-        }
         .content {
             display: flex;
             @extend %flexStartBetween;
         }
         &__data {
             width: 50%;
-            &-title {
-                font-size: 5em;
-                line-height: 1em;
-            }
-            &-description {
-                line-height: 1.5em;
+            &-main {
+                display: flex;
+                flex-wrap: wrap;
+                @extend %flexCenterStart;
+                width: 100%;
+                margin-bottom: var(--site-gutter);
+                .title {
+                    width: 100%;
+                    font-size: 5em;
+                    line-height: 1em;
+                    margin: 0 0 20px;
+                }
+                .year {
+                    display: block;
+                    font-family: $title;
+                }
+                .rating {
+                    display: flex;
+                    @extend  %flexCenterStart;
+                    width: auto;
+                    max-width: 150px;
+                    margin: 0 calc(var(--site-gutter) * 2);
+                    &-stars {
+                        transform: scale(1);
+                        transform-origin: left center;
+                        width: 100%;
+                    }
+                }
+                .duration {
+                    font-size: 0.8em;
+                }
+                .generes {
+                    display: flex;
+                    @extend %flexCenterStart;
+                    width: 100%;
+                    font-size: 0.9em;
+                    margin-top: var(--site-gutter);
+                    strong {
+                        padding-right: 20px;
+                    }
+                    span {
+                        position: relative;
+                        padding-right: var(--site-gutter);
+                        &:after {
+                            content: '/';
+                            position: absolute;
+                            top: 50%;
+                            right: 10px;
+                            font-size: 1.3em;
+                            transform: translateY(-50%);
+                        }
+                        &:last-of-type {
+                            &:after { display: none; }
+                        }
+                    }
+                }
+                .tagline {
+                    display: block;
+                    width: 100%;
+                    font-family: $text;
+                    font-style: italic;
+                    margin: var(--site-gutter) 0 var(--site-gutter);
+                }
+                .description {
+                    line-height: 1.5em;
+                    margin-top: var(--site-gutter);
+                }
             }
         }
         &__poster {
