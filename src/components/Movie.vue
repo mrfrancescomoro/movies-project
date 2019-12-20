@@ -25,7 +25,6 @@ export default {
         @include size(150px, 300px);
         border: 1px solid $water;
         margin: 10px;
-        cursor: pointer;
         &__pic {
             width: 100%;
             margin: 0;

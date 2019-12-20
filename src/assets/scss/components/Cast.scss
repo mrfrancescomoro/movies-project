@@ -1,0 +1,12 @@
+.cast-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow: hidden;
+    padding-top: var(--gutter);
+    &__stage {
+        display: flex;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+    }
+}

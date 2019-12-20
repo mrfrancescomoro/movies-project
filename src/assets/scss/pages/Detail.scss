@@ -30,7 +30,14 @@
         margin: 0;
         .content {
             display: flex;
+            flex-wrap: wrap;
             @extend %flexStartBetween;
+        }
+        .title {
+            width: 100%;
+            font-size: 5em;
+            line-height: 1em;
+            margin: 0 0 20px;
         }
         &__data {
             width: 50%;
@@ -39,13 +46,7 @@
                 flex-wrap: wrap;
                 @extend %flexCenterStart;
                 width: 100%;
-                margin-bottom: var(--site-gutter);
-                .title {
-                    width: 100%;
-                    font-size: 5em;
-                    line-height: 1em;
-                    margin: 0 0 20px;
-                }
+                margin-bottom: var(--gutter);
                 .year {
                     display: block;
                     font-family: $title;
@@ -55,7 +56,7 @@
                     @extend  %flexCenterStart;
                     width: auto;
                     max-width: 150px;
-                    margin: 0 calc(var(--site-gutter) * 2);
+                    margin: 0 calc(var(--gutter) * 2);
                     &-stars {
                         transform: scale(1);
                         transform-origin: left center;
@@ -70,13 +71,15 @@
                     @extend %flexCenterStart;
                     width: 100%;
                     font-size: 0.9em;
-                    margin-top: var(--site-gutter);
+                    margin-top: var(--gutter);
                     strong {
                         padding-right: 20px;
                     }
-                    span {
+                    .genre {
                         position: relative;
-                        padding-right: var(--site-gutter);
+                        color: $white;
+                        padding-right: var(--gutter);
+                        cursor: pointer;
                         &:after {
                             content: '/';
                             position: absolute;
@@ -95,24 +98,17 @@
                     width: 100%;
                     font-family: $text;
                     font-style: italic;
-                    margin: var(--site-gutter) 0 var(--site-gutter);
+                    margin: var(--gutter) 0 var(--gutter);
                 }
                 .description {
                     line-height: 1.5em;
-                    margin-top: var(--site-gutter);
+                    margin-top: var(--gutter);
                 }
             }
         }
-        &__poster {
-            width: 15%;
-            img {
-                width: 100%;
-            }
-        }
         &__info {
-            &-cast {
-                display: none;
-            }
+            width: 45%;
+            margin-left: 5%;
         }
     }
 }

@@ -5,9 +5,9 @@
         </div>
         <div class="movie">
             <div class="content">
+                <h1 class="title">{{ this.movie.original_title }}</h1>
                 <div class="movie__data">
                     <div class="movie__data-main">
-                        <h1 class="title">{{ this.movie.original_title }}</h1>
                         <strong class="year">{{ this.movie.release_year }}</strong>
                         <div class="rating">
                             <svg class="rating-stars" viewBox="0 0 5 0.84375">
@@ -26,30 +26,23 @@
                         </div>
                         <span class="duration">{{ this.movie.runtime }} min</span>
                         <div class="generes">
-                            <span v-for="genre in this.movie.genres">
+                            <router-link
+                                class="genre"
+                                v-for="genre in this.movie.genres"
+                                :key="genre.id"
+                                :to="{ name: 'movielist', params: {Gid: genre.id, Gname: genre.name } }"
+                            >
                                 {{ genre.name }}
-                            </span>
+                            </router-link>
                         </div>
                         <span v-if="this.movie.tagline" class="tagline">{{ this.movie.tagline }}</span>
                         <p class="description">
                             {{ this.movie.overview}}
                         </p>
                     </div>
-                    <div class="movie__data-info">
-
-                    </div>
-
                 </div>
                 <div class="movie__info">
-                    <div class="movie__info-cast">
-                        <a v-for="actor in this.movie.credits.cast" href="javascript:void(0);" class="actor">
-                            <figure class="actor__pic">
-                                <img :src="imagesUrl(actor.profile_path)" alt="" />
-                            </figure>
-                            <strong>{{ actor.character }}</strong>
-                            <small>{{ actor.name }}</small>
-                        </a>
-                    </div>
+                    <Cast :cast="this.actors" />
                 </div>
             </div>
         </div>
@@ -57,43 +50,51 @@
 </template>
 
 <script>
-import axios from 'axios';
+    import Cast from '@/components/Cast';
+    import axios from 'axios';
 
-export default {
-    name: 'detail',
-    data() {
-        return {
-            Mid: this.$route.params.Mid,
-            movie: null
-        }
-    },
-    mounted() {
-        axios
-            .get('https://api.themoviedb.org/3/movie/' + this.Mid + '?api_key=d6aab43d41a49e768563d3c740965ef2&append_to_response=videos,credits,images')
-            .then(resp => {
-                if(resp.status === 200) {
-                    resp.data.stars = this.calculateRating(resp.data.vote_average);
-                    resp.data.release_year = this.getYear(resp.data.release_date);
-                    this.movie = resp.data;
-                    console.log(this.movie);
-                }
-            })
-    },
-    methods: {
-        imagesUrl: moviePoster => {
-            return 'https://image.tmdb.org/t/p/original' + moviePoster;
+    export default {
+        name: 'detail',
+        components: {
+            Cast
         },
-        calculateRating: val => {
-            val = val / 2;
-            return val;
+        data() {
+            return {
+                Mid: this.$route.params.Mid,
+                movie: null,
+                actors: null
+            }
         },
-        getYear: release => {
-            return release.substring(0,4);
+        mounted() {
+            this.loadData();
+        },
+        methods: {
+            loadData: function() {
+                axios
+                .get('https://api.themoviedb.org/3/movie/' + this.Mid + '?api_key=d6aab43d41a49e768563d3c740965ef2&append_to_response=videos,credits,images')
+                .then(resp => {
+                    if(resp.status === 200) {
+                        resp.data.stars = this.calculateRating(resp.data.vote_average);
+                        resp.data.release_year = this.getYear(resp.data.release_date);
+                        this.movie = resp.data;
+                        this.actors = this.movie.credits.cast;
+                    }
+                })
+            },
+            imagesUrl: moviePoster => {
+                return 'https://image.tmdb.org/t/p/original' + moviePoster;
+            },
+            calculateRating: val => {
+                val = val / 2;
+                return val;
+            },
+            getYear: release => {
+                return release.substring(0,4);
+            }
         }
     }
-}
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/components/Detail';
+@import '@/assets/scss/pages/Detail';
 </style>

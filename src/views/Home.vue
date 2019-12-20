@@ -17,7 +17,7 @@
     import axios from 'axios';
 
     export default {
-        name: 'catalogue',
+        name: 'home',
         components: {
             Movie
         },
