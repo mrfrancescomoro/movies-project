@@ -1,6 +1,28 @@
 <template>
-    <div class="actordetail">
-        <strong>{{ this.actor.name }}</strong>
+    <div v-if="this.actor" class="actordetail">
+		<div class="content">
+			<div class="actor">
+				<div class="actor__info">
+					<h1 class="main-title">
+						{{ this.actor.name }}
+					</h1>
+					<span class="personal">
+						<strong>Birthday:</strong> {{ this.actor.birthday }}
+						<p>
+							{{ this.actor.biography }}
+						</p>
+					</span>
+				</div>
+				<div class="actor__pics">
+					<figure class="actor__pics-img">
+						<img :src="imagesUrl(this.actor.profile_path)" alt="" />
+					</figure>
+				</div>
+				<div class="filmography">
+					
+				</div>
+			</div>
+		</div>
     </div>
 </template>
 
@@ -25,9 +47,10 @@
         methods: {
             getData: function() {
                 axios
-                    .get('https://api.themoviedb.org/3/person/' + this.Aid + '?api_key=d6aab43d41a49e768563d3c740965ef2')
+                    .get('https://api.themoviedb.org/3/person/' + this.Aid + '?api_key=d6aab43d41a49e768563d3c740965ef2&append_to_response=videos,images')
                     .then(resp => {
                         this.actor = resp.data;
+						console.log(this.actor);
                     })
             },
             imagesUrl: moviePoster => {
@@ -38,4 +61,5 @@
 </script>
 
 <style lang="scss">
+@import '@/assets/scss/pages/ActorDetail';
 </style>

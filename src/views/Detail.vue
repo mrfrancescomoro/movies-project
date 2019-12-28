@@ -8,8 +8,7 @@
                 <h1 class="title">{{ this.movie.original_title }}</h1>
                 <div class="movie__data">
                     <div class="movie__data-main">
-                        <strong class="year">{{ this.movie.release_year }}</strong>
-                        <div class="rating">
+						<div class="rating">
                             <svg class="rating-stars" viewBox="0 0 5 0.84375">
                                 <rect class="value" :width="this.movie.stars" height="100%" fill="url(#fill)" />
                                 <rect fill="url(#stroke)" width="100%" height="100%"/>
@@ -24,6 +23,7 @@
                                 </defs>
                             </svg>
                         </div>
+                        <strong class="year">{{ this.movie.release_year }}</strong>
                         <span class="duration">{{ this.movie.runtime }} min</span>
                         <div class="generes">
                             <router-link
