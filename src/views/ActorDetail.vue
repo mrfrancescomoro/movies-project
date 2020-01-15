@@ -1,16 +1,28 @@
 <template>
     <div v-if="this.actor" class="actordetail">
-        <div class="content">
-            <figure class="actor__pic">
-                <img :src="imagesUrl(this.actor.images.profiles[0].file_path)" alt="" />
-            </figure>
-        </div>
-        <strong>{{ this.actor.name }}</strong>
-        <small>{{ this.actor.birthday}}</small>
-        <p>
-            {{ this.actor.biography }}
-        </p>
-        </div>
+		<div class="content">
+			<div class="actor">
+				<div class="actor__info">
+					<h1 class="main-title">
+						{{ this.actor.name }}
+					</h1>
+					<span class="personal">
+						<strong>Birthday:</strong> {{ this.actor.birthday }}
+						<p>
+							{{ this.actor.biography }}
+						</p>
+					</span>
+				</div>
+				<div class="actor__pics">
+					<figure class="actor__pics-img">
+						<img :src="imagesUrl(this.actor.profile_path)" alt="" />
+					</figure>
+				</div>
+				<div class="filmography">
+
+				</div>
+			</div>
+		</div>
     </div>
 </template>
 

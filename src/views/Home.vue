@@ -33,7 +33,7 @@
         methods: {
             loadMovies: function() {
                 axios
-                    .get('https://api.themoviedb.org/3/movie/popular?api_key=d6aab43d41a49e768563d3c740965ef2')
+                    .get('https://api.themoviedb.org/3/discover/movie?api_key=d6aab43d41a49e768563d3c740965ef2')
                     .then(resp => {
                         this.res = resp.data.results;
                         this.res.map(movie => this.movies.push(movie));

@@ -48,15 +48,15 @@
                 width: 100%;
                 margin-bottom: var(--gutter);
                 .year {
-                    display: block;
+                    display: flex;
                     font-family: $title;
+					margin: 0 calc(var(--gutter) * 2);
                 }
                 .rating {
                     display: flex;
                     @extend  %flexCenterStart;
                     width: auto;
                     max-width: 150px;
-                    margin: 0 calc(var(--gutter) * 2);
                     &-stars {
                         transform: scale(1);
                         transform-origin: left center;

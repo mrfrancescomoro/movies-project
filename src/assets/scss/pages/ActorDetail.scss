@@ -1,5 +1,47 @@
 .actordetail {
+<<<<<<< HEAD
     position: relative;
     background: $black;
     color: $white;
+=======
+	background: $black;
+	color: $white;
+	.actor {
+        display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+        @include size(100%,auto);
+        position: relative;
+        border: 0;
+        padding-top: 10vh;
+        color: $white;
+        margin: 0;
+		&__info {
+			width: 60%;
+		}
+		&__pics {
+			width: 300px;
+			&-img {
+				width: 100%;
+				position: relative;
+				img {
+					@include size(100%,100%);
+					object-fit: cover;
+				}
+			}
+		}
+		.filmography {
+			display: flex;
+		    flex-wrap: wrap;
+		    width: 100%;
+		    overflow: hidden;
+		    padding-top: var(--gutter);
+		    &__stage {
+		        display: flex;
+		        flex-wrap: nowrap;
+		        white-space: nowrap;
+		    }
+		}
+	}
+>>>>>>> 5095239e68736b9723c5c4eb060da66e4558a20b
 }
