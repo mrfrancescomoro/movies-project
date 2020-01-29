@@ -1,15 +1,15 @@
 <template>
     <div id="app">
-        <!-- <Navbar /> -->
+        <Head />
         <router-view/>
     </div>
 </template>
 <script>
-    import Navbar from '@/components/Navbar';
+    import Head from '@/components/Head';
     export default {
         name: 'App',
         components: {
-            Navbar
+            Head
         }
     }
 </script>

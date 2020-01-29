@@ -1,7 +1,7 @@
 <template>
     <div v-if="this.movie" class="detail">
         <div class="bg">
-            <img :src="imagesUrl(this.movie.backdrop_path)" alt="" />
+            <img :src="imagesUrl(getBgImage(this.movie.images.backdrops))" alt="" />
         </div>
         <div class="movie">
             <div class="content">
@@ -43,6 +43,9 @@
                 </div>
                 <div class="movie__info">
                     <Cast :cast="this.actors" />
+                </div>
+                <div class="trailers">
+                    
                 </div>
             </div>
         </div>
@@ -90,6 +93,10 @@
             },
             getYear: release => {
                 return release.substring(0,4);
+            },
+            getBgImage: imgs => {
+                let random = Math.floor(Math.random() * imgs.length);
+                return imgs[random].file_path;
             }
         }
     }
