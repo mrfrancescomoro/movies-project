@@ -97,11 +97,21 @@ export default {
                 }
             }
 
-            onDragStarted(mousePosition) {}
+            onDragStarted(mousePosition) {
+                let items = this.options.element.children
+                Array.from(items).forEach(el => {
+                    el.style = 'pointer-events: none';
+                })
+            }
 
             onDrag(mousePosition) {}
 
-            onDragEnded(mousePosition) {}
+            onDragEnded(mousePosition) {
+                let items = this.options.element.children
+                Array.from(items).forEach(el => {
+                    el.style = 'pointer-events: all';
+                })
+            }
 
             onTranslation() {}
 

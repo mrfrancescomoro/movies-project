@@ -1,9 +1,10 @@
 /* --- COLORS --- */
 $realBlack: #000;
 $white: #fff;
-$black: #0a0a0a;
+$black: #0f0f0f;
 $water: #0be89a;
 $silver: #dbdbdb;
+$yellow: #fcab10;
 
 
 /* --- EASING --- */
@@ -15,4 +16,9 @@ $ease-out-quart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
 
 :root {
     --gutter: 30px;
+    --head: 100px;
+
+
+    --preWidth: 200px;
+    --preHeight: 300px
 }

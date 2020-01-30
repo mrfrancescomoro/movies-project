@@ -1,5 +1,5 @@
 <template>
-    <header id="head" class="head">
+    <header id="head" class="site-head head">
         <Logo />
         <Navbar />
     </header>
@@ -16,3 +16,6 @@ export default {
     }
 }
 </script>
+<style lang="scss">
+@import '@/assets/scss/components/Head';
+</style>

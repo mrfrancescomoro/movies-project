@@ -1,7 +1,7 @@
 <template>
     <div class="movielist">
         <strong>{{ this.Gname }}</strong>
-        <Movie
+        <MoviePreview
             v-for="movie in movies"
             :key="movie.id"
             :movie="movie"
@@ -11,13 +11,13 @@
 </template>
 
 <script>
-import Movie from '@/components/Movie';
+import MoviePreview from '@/components/MoviePreview';
 import axios from 'axios';
 
 export default {
     name: 'movielist',
     components: {
-        Movie
+        MoviePreview
     },
     data() {
         return {

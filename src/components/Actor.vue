@@ -27,7 +27,6 @@ export default {
         width: 150px;
         position: relative;
         margin: 0 10px;
-        // pointer-events: none;
         &__img {
             width: 100%;
             margin: 0;
@@ -44,7 +43,7 @@ export default {
             @extend %flexEndStart;
             background-image: linear-gradient(to top, $black, transparent);
             @include size(100%,50%);
-            font-family: $title;
+            font-weight: $bold;
             white-space: normal;
             font-size: 1em;
             line-height: 1em;

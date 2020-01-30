@@ -1,30 +1,40 @@
 <template>
     <div class="catalogue">
-        <h1>Catalogue</h1>
         <div class="movies-list">
-            <Movie
+            <MoviePreview
                 v-for="movie in movies"
                 :key="movie.id"
                 :movie="movie"
                 @click.native="goToDetail(movie.id)"
             />
         </div>
+        <div class="movies-list">
+            <SeriePreview
+                v-for="serie in series"
+                :key="serie.id"
+                :serie="serie"
+                @click.native="goToDetail(serie.id)"
+            />
+        </div>
     </div>
 </template>
 
 <script>
-    import Movie from '@/components/Movie';
+    import MoviePreview from '@/components/MoviePreview';
+    import SeriePreview from '@/components/SeriePreview';
     import axios from 'axios';
 
     export default {
         name: 'home',
         components: {
-            Movie
+            MoviePreview,
+            SeriePreview
         },
         data() {
             return {
                 res: null,
-                movies: []
+                movies: [],
+                series: []
             }
         },
         mounted() {
@@ -33,10 +43,18 @@
         methods: {
             loadMovies: function() {
                 axios
-                    .get('https://api.themoviedb.org/3/discover/movie?api_key=d6aab43d41a49e768563d3c740965ef2')
+                    .get('https://api.themoviedb.org/3/trending/movie/week?api_key=d6aab43d41a49e768563d3c740965ef2')
                     .then(resp => {
                         this.res = resp.data.results;
                         this.res.map(movie => this.movies.push(movie));
+                    })
+            },
+            loadSeries: function() {
+                axios
+                    .get('https://api.themoviedb.org/3/trending/tv/week?api_key=d6aab43d41a49e768563d3c740965ef2')
+                    .then(resp => {
+                        this.res = resp.data.results;
+                        this.res.map(serie => this.series.push(serie));
                     })
             },
             goToDetail: function(movieId) {
@@ -47,9 +65,6 @@
 </script>
 
 <style lang="scss">
-    h1 {
-        font-family: $title;
-    }
     .movies-list {
         display: flex;
         flex-wrap: wrap;

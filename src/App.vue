@@ -1,11 +1,13 @@
 <template>
-    <div id="app">
+    <div id="itsawrap">
         <Head />
-        <router-view/>
+        <main class="site-wrap">
+            <router-view/>
+        </main>
     </div>
 </template>
 <script>
-    import Head from '@/components/Head';
+    import Head from '@/views/layout/Head';
     export default {
         name: 'App',
         components: {

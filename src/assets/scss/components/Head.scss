@@ -1,0 +1,8 @@
+.head {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, $black, transparent);
+    @include size(100%, var(--head));
+    padding: var(--gutter);
+}

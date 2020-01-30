@@ -37,7 +37,7 @@
                         </div>
                         <span v-if="this.movie.tagline" class="tagline">{{ this.movie.tagline }}</span>
                         <p class="description">
-                            {{ this.movie.overview}}
+                            {{ this.movie.overview }}
                         </p>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                     <Cast :cast="this.actors" />
                 </div>
                 <div class="trailers">
-                    
+
                 </div>
             </div>
         </div>
@@ -81,6 +81,7 @@
                         resp.data.release_year = this.getYear(resp.data.release_date);
                         this.movie = resp.data;
                         this.actors = this.movie.credits.cast;
+                        console.log(this.movie);
                     }
                 })
             },

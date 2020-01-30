@@ -27,13 +27,13 @@
 </template>
 
 <script>
-    import Movie from '@/components/Movie';
+    import MoviePreview from '@/components/MoviePreview';
     import axios from 'axios';
 
     export default {
         name: 'actordetail',
         components: {
-            Movie
+            MoviePreview
         },
         data() {
             return {

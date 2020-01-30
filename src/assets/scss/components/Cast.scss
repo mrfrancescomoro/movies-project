@@ -8,5 +8,10 @@
         display: flex;
         flex-wrap: nowrap;
         white-space: nowrap;
+        &.dragged {
+            & * {
+                pointer-events: none;
+            }
+        }
     }
 }

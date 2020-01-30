@@ -2,7 +2,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: $white;
     width: 100%;
     min-height: 100vh;
 }
@@ -11,7 +10,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: $white;
     width: 100%;
     min-height: 100vh;
     z-index: 10;
@@ -43,9 +41,4 @@
 
 .page {
     &__head, &__content, &__foot { position: relative; z-index: 10; }
-	@media (max-width: 767px) {
-		&__head {
-			.main-title .back { display: none !important; }
-		}
-	}
 }

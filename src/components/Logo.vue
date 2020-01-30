@@ -12,5 +12,6 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss">
+@import '@/assets/scss/components/Logo';
 </style>
