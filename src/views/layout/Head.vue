@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Logo from '@/components/Logo';
-import Navbar from '@/components/Navbar';
+import Logo from '@/views/layout/Logo';
+import Navbar from '@/views/layout/Navbar';
 
 export default {
     name: 'Head',

@@ -5,7 +5,7 @@
         </div>
         <div class="movie">
             <div class="content">
-                <h1 class="title">{{ this.movie.original_title }}</h1>
+                <h1 class="title">{{ this.movie.title }}</h1>
                 <div class="movie__data">
                     <div class="movie__data-main">
 						<div class="rating">
@@ -23,8 +23,9 @@
                                 </defs>
                             </svg>
                         </div>
-                        <strong class="year">{{ this.movie.release_year }}</strong>
-                        <span class="duration">{{ this.movie.runtime }} min</span>
+                        <strong class="year">{{ this.movie.year }}</strong>
+                        <span v-if="this.movie.runtime" class="duration">{{ this.movie.runtime }} min</span>
+                        <span v-if="this.movie.seasons" class="season">{{ this.movie.seasons.length }} Seasons</span>
                         <div class="generes">
                             <router-link
                                 class="genre"
@@ -64,6 +65,7 @@
         data() {
             return {
                 Mid: this.$route.params.Mid,
+                type: this.$route.params.type,
                 movie: null,
                 actors: null
             }
@@ -74,13 +76,31 @@
         methods: {
             loadData: function() {
                 axios
-                .get('https://api.themoviedb.org/3/movie/' + this.Mid + '?api_key=d6aab43d41a49e768563d3c740965ef2&append_to_response=videos,credits,images')
+                .get('https://api.themoviedb.org/3/' + this.type + '/' + this.Mid + '?api_key=d6aab43d41a49e768563d3c740965ef2&append_to_response=videos,credits,images')
                 .then(resp => {
                     if(resp.status === 200) {
-                        resp.data.stars = this.calculateRating(resp.data.vote_average);
-                        resp.data.release_year = this.getYear(resp.data.release_date);
+                        let res = resp.data;
+
+                        res.stars = this.calculateRating(res.vote_average);
+                        
+                        if(res.release_date) {
+                            res.year = this.getYear(res.release_date);
+                        }
+                        if(res.first_air_date) {
+                            res.year = this.getYear(res.first_air_date);
+                        }
+                        if(res.original_title) {
+                            res.title = res.original_title;
+                        }
+                        if(res.original_name) {
+                            res.title = res.original_name;
+                        }
+
+
                         this.movie = resp.data;
                         this.actors = this.movie.credits.cast;
+
+
                         console.log(this.movie);
                     }
                 })

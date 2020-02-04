@@ -78,6 +78,7 @@
                     }
                     .genre {
                         position: relative;
+                        font-weight: $bold;
                         color: $white;
                         padding-right: var(--gutter);
                         cursor: pointer;

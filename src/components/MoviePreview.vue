@@ -15,7 +15,7 @@ export default {
     name: 'MoviePreview',
     props: ['movie'],
     mounted() {
-        console.log(this.movie);
+        // console.log(this.movie);
     },
     methods: {
         imagesUrl: function(moviePoster) {

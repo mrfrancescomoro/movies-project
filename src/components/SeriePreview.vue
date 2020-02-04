@@ -1,11 +1,11 @@
 <template>
-    <div class="movie-preview">
-        <figure class="movie-preview__pic">
-            <img :src="imagesUrl(movie.poster_path)" alt="" />
+    <div class="serie-preview">
+        <figure class="serie-preview__pic">
+            <img :src="imagesUrl(serie.poster_path)" alt="" />
         </figure>
-        <span class="movie-preview__title">
-            <span class="title">{{ movie.original_title }}</span>
-            <small>{{ getYear(movie.release_date) }}</small>
+        <span class="serie-preview__title">
+            <span class="title">{{ serie.original_title }}</span>
+            <small>{{ getYear(serie.first_air_date) }}</small>
         </span>
     </div>
 </template>
@@ -13,9 +13,9 @@
 <script>
 export default {
     name: 'SeriePreview',
-    props: ['movie'],
+    props: ['serie'],
     mounted() {
-        console.log(this.movie);
+        
     },
     methods: {
         imagesUrl: function(moviePoster) {
@@ -29,10 +29,11 @@ export default {
 </script>
 
 <style lang="scss">
-    .movie-preview {
+    .serie-preview {
         display: block;
         width: var(--preWidth);
         margin: calc(var(--gutter) / 2) var(--gutter);
+        cursor: pointer;
         &__pic {
             display: block;
             width: 100%;

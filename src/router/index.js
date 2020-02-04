@@ -11,12 +11,7 @@ const routes = [
         component: Home
     },
     {
-        path: '/about',
-        name: 'about',
-        component: () => import('../views/pages/About.vue')
-    },
-    {
-        path: '/catalogue/:Mid',
+        path: '/:type/:Mid',
         name: 'detail',
         component: () => import('../views/pages/Detail.vue')
     },
@@ -29,6 +24,11 @@ const routes = [
         path: '/actor/:Aid',
         name: 'actordetail',
         component: () => import('../views/pages/ActorDetail.vue')
+    },
+    {
+        path: '/user',
+        name: 'user',
+        component: () => import('../views/pages/User.vue')
     }
 ]
 

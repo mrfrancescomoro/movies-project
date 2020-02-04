@@ -1,6 +1,6 @@
 .logo {
     display: block;
-    @include size(190px,30px);
+    @include size(var(--logoW),var(--logoH));
     svg {
         @include size(100%,100%);
         fill: $yellow;

@@ -5,7 +5,7 @@
             v-for="movie in movies"
             :key="movie.id"
             :movie="movie"
-            @click.native="goToDetail(movie.id)"
+            @click.native="goToDetail(movie.id, movie.media_type)"
         />
     </div>
 </template>
@@ -34,7 +34,7 @@ export default {
     methods: {
         loadMovies: function() {
             axios
-                .get('https://api.themoviedb.org/3/discover/movie?api_key=d6aab43d41a49e768563d3c740965ef2&with_genres=' + this.Gid)
+                .get('https://api.themoviedb.org/3/discover/' + this.type + '?api_key=d6aab43d41a49e768563d3c740965ef2&with_genres=' + this.Gid)
                 .then(resp => {
                     if(resp.status === 200) {
                         this.res = resp.data.results;
@@ -43,7 +43,7 @@ export default {
                 })
         },
         goToDetail: function(movieId) {
-            this.$router.push({ name: 'detail', params: { Mid: movieId } })
+            this.$router.push({ name: 'detail', params: { Mid: movieId, type: mediaType } })
         }
     }
 }

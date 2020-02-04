@@ -1,19 +1,21 @@
 <template>
     <div class="catalogue">
         <div class="movies-list">
+            <h2>Trending Movies</h2>
             <MoviePreview
                 v-for="movie in movies"
                 :key="movie.id"
                 :movie="movie"
-                @click.native="goToDetail(movie.id)"
+                @click.native="goToDetail(movie.id, movie.media_type)"
             />
         </div>
         <div class="movies-list">
+            <h2>Trending TV Series</h2>
             <SeriePreview
                 v-for="serie in series"
                 :key="serie.id"
                 :serie="serie"
-                @click.native="goToDetail(serie.id)"
+                @click.native="goToDetail(serie.id, serie.media_type)"
             />
         </div>
     </div>
@@ -39,6 +41,7 @@
         },
         mounted() {
             this.loadMovies();
+            this.loadSeries();
         },
         methods: {
             loadMovies: function() {
@@ -57,14 +60,23 @@
                         this.res.map(serie => this.series.push(serie));
                     })
             },
-            goToDetail: function(movieId) {
-                this.$router.push({ name: 'detail', params: { Mid: movieId } })
+            goToDetail: function(mediaId, mediaType) {
+                this.$router.push({ name: 'detail', params: { Mid: mediaId, type: mediaType } })
             }
         }
     }
 </script>
 
 <style lang="scss">
+.catalogue {
+    margin-top: var(--head);
+}
+h2 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: $bold;
+}
     .movies-list {
         display: flex;
         flex-wrap: wrap;

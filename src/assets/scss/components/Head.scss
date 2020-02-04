@@ -3,6 +3,41 @@
     top: 0;
     left: 0;
     background-image: linear-gradient(to bottom, $black, transparent);
+    display: flex;
+    @extend %flexCenterBetween;
     @include size(100%, var(--head));
     padding: var(--gutter);
+    #nav {
+        display: flex;
+        @extend %flexCenterBetween;
+        width: calc(100% - var(--logoW));
+        .menu {
+            display: flex;
+            @extend %flexCenterStart;
+            margin-left: var(--gutter);
+            &-link {
+                font-weight: $bold;
+                font-size: 0.8em;
+                color: $white;
+                text-transform: uppercase;
+                margin: 0 calc(var(--gutter) / 2);
+            }
+        }
+        .utilities {
+            display: flex;
+            @extend %flexCenterEnd;
+        }
+        .search-btn {
+            display: flex;
+            @extend %flexCenterCenter;
+            background: transparent;
+            @include size(var(--icon), var(--icon));
+            border: 0;
+            margin: 0 0 0 var(--gutter);
+            svg {
+                @include size(60%,60%);
+                fill: $white;
+            }
+        }
+    }
 }
