@@ -76,13 +76,13 @@
         methods: {
             loadData: function() {
                 axios
-                .get('https://api.themoviedb.org/3/' + this.type + '/' + this.Mid + '?api_key=d6aab43d41a49e768563d3c740965ef2&append_to_response=videos,credits,images')
+                .get(`https://api.themoviedb.org/3/${this.type}/${this.Mid}?api_key=d6aab43d41a49e768563d3c740965ef2&append_to_response=videos,credits,images`)
                 .then(resp => {
                     if(resp.status === 200) {
                         let res = resp.data;
 
                         res.stars = this.calculateRating(res.vote_average);
-                        
+
                         if(res.release_date) {
                             res.year = this.getYear(res.release_date);
                         }
@@ -106,7 +106,7 @@
                 })
             },
             imagesUrl: moviePoster => {
-                return 'https://image.tmdb.org/t/p/original' + moviePoster;
+                return `https://image.tmdb.org/t/p/original${moviePoster}`;
             },
             calculateRating: val => {
                 val = val / 2;

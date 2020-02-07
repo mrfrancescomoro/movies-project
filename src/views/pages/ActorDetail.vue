@@ -47,7 +47,7 @@
         methods: {
             getData: function() {
                 axios
-                    .get('https://api.themoviedb.org/3/person/' + this.Aid + '?api_key=d6aab43d41a49e768563d3c740965ef2&append_to_response=images,tagged_images,combined_credits')
+                    .get(`https://api.themoviedb.org/3/person/${this.Aid}?api_key=d6aab43d41a49e768563d3c740965ef2&append_to_response=images,tagged_images,combined_credits`)
                     .then(resp => {
                         this.actor = resp.data;
                         console.log(this.actor);

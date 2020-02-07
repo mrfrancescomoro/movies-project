@@ -26,6 +26,8 @@
     import SeriePreview from '@/components/SeriePreview';
     import axios from 'axios';
 
+    import Slider from '@/components/utilities/Slider';
+
     export default {
         name: 'home',
         components: {
@@ -42,11 +44,20 @@
         mounted() {
             this.loadMovies();
             this.loadSeries();
+            this.getGeneres();
         },
         methods: {
+            getGeneres: function() {
+                axios
+                    .get(`https://api.themoviedb.org/3/genre/movie/list?api_key=d6aab43d41a49e768563d3c740965ef2`)
+                    .then(resp => {
+                        this.res = resp.data.genres;
+                        console.log(this.res);
+                    })
+            },
             loadMovies: function() {
                 axios
-                    .get('https://api.themoviedb.org/3/trending/movie/week?api_key=d6aab43d41a49e768563d3c740965ef2')
+                    .get(`https://api.themoviedb.org/3/trending/movie/week?api_key=d6aab43d41a49e768563d3c740965ef2`)
                     .then(resp => {
                         this.res = resp.data.results;
                         this.res.map(movie => this.movies.push(movie));
@@ -54,7 +65,7 @@
             },
             loadSeries: function() {
                 axios
-                    .get('https://api.themoviedb.org/3/trending/tv/week?api_key=d6aab43d41a49e768563d3c740965ef2')
+                    .get(`https://api.themoviedb.org/3/trending/tv/week?api_key=d6aab43d41a49e768563d3c740965ef2`)
                     .then(resp => {
                         this.res = resp.data.results;
                         this.res.map(serie => this.series.push(serie));

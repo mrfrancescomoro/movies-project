@@ -34,7 +34,7 @@ export default {
     methods: {
         loadMovies: function() {
             axios
-                .get('https://api.themoviedb.org/3/discover/' + this.type + '?api_key=d6aab43d41a49e768563d3c740965ef2&with_genres=' + this.Gid)
+                .get(`https://api.themoviedb.org/3/discover/${this.type}?api_key=d6aab43d41a49e768563d3c740965ef2&with_genres=${this.Gid}`)
                 .then(resp => {
                     if(resp.status === 200) {
                         this.res = resp.data.results;
